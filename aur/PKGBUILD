@@ -11,10 +11,13 @@ provides=('razer-blackwidow-ultimate')
 conflicts=('blackwidow-enable-macro-keys' 'razer-blackwidow-ultimate-macro-scripts')
 options=('!strip')
 install="razer-blackwidow-ultimate.install"
-source=('https://github.com/juankfree/razer-blackwidow-ultimate/raw/e77a2003b68050b83ea7babcf01c5580e048dc76/razer-blackwidow-ultimate.py' 'https://github.com/juankfree/razer-blackwidow-ultimate/raw/f48dab7b00c54e588793d9a6f222f788ac17dc92/99-razer-blackwidow-ultimate.rules')
-md5sums=('SKIP' 'SKIP')
+source=('https://github.com/juankfree/razer-blackwidow-ultimate/raw/06f5c0d4dc4a810a639fcc24df5c9f22df0a0934/razer-blackwidow-ultimate.py'
+		'https://github.com/juankfree/razer-blackwidow-ultimate/raw/06f5c0d4dc4a810a639fcc24df5c9f22df0a0934/razer-blackwidow-ultimate.sh'
+		'https://github.com/juankfree/razer-blackwidow-ultimate/raw/06f5c0d4dc4a810a639fcc24df5c9f22df0a0934/99-razer-blackwidow-ultimate.rules'
+)
+md5sums=('f28c9a3078c51e68fdf3478aaa26ab34' 'ea3c0da3891bda36c731a7b7bf8769ae' 'd03954d2f998986c26c001eba2b3fe5f')
 package() {
-	install -Dm755 "${srcdir}/razer-blackwidow-ultimate.sh" "${pkgdir}/usr/bin/razer-blackwidow-ultimate"
 	install -Dm755 "${srcdir}/razer-blackwidow-ultimate.py" "${pkgdir}/usr/bin/razer-blackwidow-ultimate.py"
+	install -Dm755 "${srcdir}/razer-blackwidow-ultimate.sh" "${pkgdir}/usr/bin/razer-blackwidow-ultimate"
 	install -Dm755 "${srcdir}/99-razer-blackwidow-ultimate.rules" "${pkgdir}/usr/lib/udev/rules.d/99-razer-blackwidow-ultimate.rules"
 }
