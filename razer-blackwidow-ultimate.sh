@@ -1,2 +1,3 @@
 #!/bin/bash
-razer-blackwidow-ultimate.py ; xmodmap -e "keycode 191 = XF86Launch4"
+/usr/bin/razer-blackwidow-ultimate.py
+/usr/bin/xmodmap -e "keycode 191 = XF86Launch4"
