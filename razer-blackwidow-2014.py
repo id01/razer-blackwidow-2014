@@ -4,7 +4,7 @@ import usb
 import sys
 
 VENDOR_ID = 0x1532  # Razer
-PRODUCT_ID = 0x011a  # BlackWidow Ultimate
+PRODUCT_ID = 0x011b  # BlackWidow 2014
 
 USB_REQUEST_TYPE = 0x21  # Host To Device | Class | Interface
 USB_REQUEST = 0x09  # SET_REPORT
