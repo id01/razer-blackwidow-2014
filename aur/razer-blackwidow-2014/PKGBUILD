@@ -12,15 +12,12 @@ provides=('razer-blackwidow-2014')
 conflicts=('razer-blackwidow-macro-scripts')
 options=('!strip')
 install="razer-blackwidow-2014.install"
-source=('https://github.com/skogler/razer-blackwidow-2014/raw/94073c2e14785ba65f638362b672c9336c7624f4/razer-blackwidow-2014.py'
-		'https://github.com/skogler/razer-blackwidow-2014/raw/94073c2e14785ba65f638362b672c9336c7624f4/razer-blackwidow-2014.sh'
-		'https://github.com/skogler/razer-blackwidow-2014/raw/94073c2e14785ba65f638362b672c9336c7624f4/99-razer-blackwidow-2014.rules'
-		'https://github.com/skogler/razer-blackwidow-2014/raw/94073c2e14785ba65f638362b672c9336c7624f4/razer-blackwidow-2014.desktop'
-)
-md5sums=('f28c9a3078c51e68fdf3478aaa26ab34' '6ba8808c6c2a18b25384ccae32167cba' '09e8031d8cabdefb2d312f13d7b85357' '5214cf77dad445f191683e0705941831')
+source=('git+https://github.com/skogler/razer-blackwidow-2014')
+md5sums=('SKIP')
 package() {
-	install -Dm755 "${srcdir}/razer-blackwidow-2014.py" "${pkgdir}/usr/bin/razer-blackwidow-2014.py"
-	install -Dm755 "${srcdir}/razer-blackwidow-2014.sh" "${pkgdir}/usr/bin/razer-blackwidow-2014"
-	install -Dm644 "${srcdir}/99-razer-blackwidow-2014.rules" "${pkgdir}/usr/lib/udev/rules.d/99-razer-blackwidow-2014.rules"
-	install -Dm644 "${srcdir}/razer-blackwidow-2014.desktop" "${pkgdir}/etc/xdg/autostart/razer-blackwidow-2014.desktop"
+  cd "${srcdir}/razer-blackwidow-2014/"
+	install -Dm755 "razer-blackwidow-2014.py" "${pkgdir}/usr/bin/razer-blackwidow-2014.py"
+	install -Dm755 "razer-blackwidow-2014.sh" "${pkgdir}/usr/bin/razer-blackwidow-2014"
+	install -Dm644 "99-razer-blackwidow-2014.rules" "${pkgdir}/usr/lib/udev/rules.d/99-razer-blackwidow-2014.rules"
+	install -Dm644 "razer-blackwidow-2014.desktop" "${pkgdir}/etc/xdg/autostart/razer-blackwidow-2014.desktop"
 }
