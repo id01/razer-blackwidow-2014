@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Name=razer-blackwidow-ultimate
+Name=razer-blackwidow-2014
 Comment=
 Exec=/usr/bin/xmodmap -e "keycode 191 = XF86Launch4"
 StartupNotify=false
