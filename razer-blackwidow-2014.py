@@ -1,10 +1,18 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+### BEGIN INIT INFO
+# Provides:          razer blackwidow 2014 macro
+# Default-Start:     5
+# Default-Stop:      1 2 3 4
+# Required-Start:
+# Required-Stop:
+# Description:       Enables the Razer Blackwidow 2014's macro keys.
+### END INIT INFO
 
 import usb
 import sys
 
 VENDOR_ID = 0x1532  # Razer
-PRODUCT_ID = 0x011b  # BlackWidow 2014
+PRODUCT_ID = 0x011a  # BlackWidow 2014
 
 USB_REQUEST_TYPE = 0x21  # Host To Device | Class | Interface
 USB_REQUEST = 0x09  # SET_REPORT
@@ -14,6 +22,17 @@ USB_INDEX = 0x2
 USB_INTERFACE = 2
 
 LOG = sys.stderr.write
+
+try:
+	roottest = open('/root/razer-blackwidow-2014-root-test', 'a');
+except PermissionError:
+	print("You need root to run this script!");
+	exit(1);
+if roottest:
+	roottest.close();
+else:
+	print("You need root to run this script!");
+	exit(1);
 
 class blackwidow(object):
 	kernel_driver_detached = False
@@ -36,7 +55,10 @@ class blackwidow(object):
 
 	def __del__(self):
 		LOG("Releasing claimed interface\n")
-		usb.util.release_interface(self.device, USB_INTERFACE)
+		try:
+			usb.util.release_interface(self.device, USB_INTERFACE)
+		except AttributeError:
+			LOG("Could not release interface. It probably wasn't found.\n");
 
 		if self.kernel_driver_detached:
 			LOG("Reattaching the kernel driver\n")
@@ -87,7 +109,10 @@ def main():
 	dim     = '0303 0301 0454'
 	off     = '0303 0301 0400'
 
-	bw = blackwidow()
+	try:
+		bw = blackwidow()
+	except ValueError:
+		exit(1);
 	bw.send(init_old)
 
 if __name__ == '__main__':
